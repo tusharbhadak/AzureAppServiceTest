@@ -30,6 +30,11 @@ AZURE_CONTAINER = 'uploads'
 
 ALLOWED_HOSTS = ['azuretest-bgdkg8h7g7haedfj.centralindia-01.azurewebsites.net','127.0.0.1']
 
+CSRF_TRUSTED_ORIGINS = [
+    "https://azuretest-bgdkg8h7g7haedfj.centralindia-01.azurewebsites.net",
+]
+
+
 
 # Application definition
 
