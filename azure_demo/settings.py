@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/5.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -25,7 +25,10 @@ SECRET_KEY = 'django-insecure-c1yh4nve&dh9j82lv-yh5l7i!^c=nwm$(dnm@e_ci&q8vud=h4
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['azuretest-bgdkg8h7g7haedfj.centralindia-01.azurewebsites.net']
+AZURE_STORAGE_CONNECTION_STRING = os.getenv('AZURE_STORAGE_CONNECTION_STRING','DefaultEndpointsProtocol=https;AccountName=azurestorage1test;AccountKey=sozmcA9SENiPjahIgMtGJInxRAZI4AbeJOo0sTRCTCD9ZJR7/xL3QavJAXH9PLoJnPAT74INyxGn+ASt2mVRvQ==;EndpointSuffix=core.windows.net')
+AZURE_CONTAINER = 'uploads'
+
+ALLOWED_HOSTS = ['azuretest-bgdkg8h7g7haedfj.centralindia-01.azurewebsites.net','127.0.0.1']
 
 
 # Application definition
@@ -37,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'home', 
 ]
 
 MIDDLEWARE = [
@@ -58,6 +62,7 @@ TEMPLATES = [
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
+                'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
